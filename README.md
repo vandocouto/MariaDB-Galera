@@ -31,7 +31,7 @@ export AWS_ACCESS_KEY_ID=""
 export AWS_SECRET_ACCESS_KEY=""
 </pre>
 ## Deploy infrastructure
-#####Need to install Terraform and Ansible
+##### Need to install Terraform and Ansible
 
 Step 1 - Adjust the variable file
 
