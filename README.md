@@ -92,7 +92,27 @@ root_db_password=pass
 ansible_ssh_user=ubuntu
 ansible_ssh_private_key_file=../chave/Blog-Estudo.pem
 </pre>
-Step 2- Run the playbook
+Step 2 - Run the playbook
 <pre>
 $ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i hosts tasks/main.yml
+</pre>
+### Access the instances and enter mysql with the user root and password pass
+<pre>
+$ mysql -u root -ppass
+</pre>
+
+Or
+
+<pre>
+mysql -u root -ppass -e "show status like 'wsrep_cluster_size'"
+</pre>
+
+If everything is correct, it should contain the value 3
+
+<pre>
++--------------------+-------+
+| Variable_name      | Value |
++--------------------+-------+
+| wsrep_cluster_size | 3     |
++--------------------+-------+
 </pre>
