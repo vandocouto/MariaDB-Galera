@@ -2,5 +2,6 @@ default/terraform.tfstate
 default/terraform.tfstate.backup
 terraform.tfstate
 .terraform.tfstate.lock.info
+terraform/default/terraform.tfstate.backup
 .idea
 
