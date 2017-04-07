@@ -1,0 +1,14 @@
+[galera]
+
+#mysql settings
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+innodb_doublewrite=1
+bind-address=0.0.0.0
+
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+wsrep_cluster_name="tutoriaisgnulinux"
+wsrep_cluster_address=gcomm://{{ manager_ip }},{{ node1_ip }},{{ node2_ip }}
+wsrep_sst_method=rsync

@@ -1,0 +1,11 @@
+---
+# tasks file for galera
+
+- name: "Hosts"
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - include: galera.yml
+      tags: galera

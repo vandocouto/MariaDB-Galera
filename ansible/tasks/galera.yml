@@ -1,0 +1,40 @@
+---
+- name: "MariaDB Cluster | Configure file"
+  template: src="{{ item.src }}" dest="{{ item.dest }}"
+  with_items:
+    - { src: 'templates/temp_galera.cnf' , dest: '/etc/mysql/conf.d/galera.cnf'}
+    - { src: 'templates/temp_my.cnf', dest: '/etc/mysql/my.cnf'}
+  when: "'galera' in group_names"
+
+- name: "MariaDB Cluster | Configure file"
+  template: src='templates/temp_security.cnf' dest='/root/.my.cnf' owner=root mode=0600
+  when: "'galera' in group_names"
+
+- name: "MariaDB Cluster | set timezone to America/Sao_Paulo"
+  timezone:
+   name: America/Sao_Paulo
+  when: "'galera' in group_names"
+
+- name: "MariaDB Cluster | Permission"
+  mysql_user: name=root host="{{ item }}" password="{{ root_db_password }}" priv=*.*:ALL
+  with_items:
+    - "{{ manager_ip }}"
+    - "{{ node1_ip }}"
+    - "{{ node2_ip }}"
+  when: "'galera' in group_names"
+  tags: permission
+
+- name: "MariaDB Cluster | STOP Service"
+  systemd: name=mysql state=stopped
+  when: "'galera' in group_names"
+  ignore_errors: yes
+
+- name: "MariaDB Cluster | Configure Galera_New_Cluster"
+  shell: galera_new_cluster
+  when: "'manager' in group_names"
+  ignore_errors: yes
+
+- name: "MariaDB Cluster | START Service"
+  systemd: name=mysql state=started
+  when: "'node' in group_names"
+  ignore_errors: yes

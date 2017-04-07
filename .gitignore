@@ -1,0 +1,6 @@
+default/terraform.tfstate
+default/terraform.tfstate.backup
+terraform.tfstate
+.terraform.tfstate.lock.info
+.idea
+
