@@ -65,7 +65,7 @@ Step 1 - Configuring the hosts file
 $ vim ansible/hosts
 </pre>
 Example:
-##### Set as below (First public ip and the intern should be the manager)
+##### Set as below (First public ip and private ip should be the manager)
 <pre>
 [galera]
 34.203.229.66
