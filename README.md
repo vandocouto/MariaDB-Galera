@@ -118,5 +118,5 @@ If everything is correct, it should contain the value 3
 </pre>
 #### Closing the project
 <pre>
- ./deploy.sh default destroy
+ $ ./deploy.sh default destroy
  </pre>
