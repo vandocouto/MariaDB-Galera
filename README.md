@@ -11,7 +11,7 @@ step 1 - Create directory (chave)
 $ cd MariaDB-Galera/
 $ mkdir chave
 </pre>
-step 2 - Move the .pem key into the key directory, file permission should be 400
+step 2 - Move the .pem into the key directory, file permission should be 400
 
 <pre>
 cd chave/
@@ -116,3 +116,7 @@ If everything is correct, it should contain the value 3
 | wsrep_cluster_size | 3     |
 +--------------------+-------+
 </pre>
+#### Closing the project
+<pre>
+ ./deploy.sh default destroy
+ </pre>
